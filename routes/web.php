@@ -47,6 +47,8 @@ Route::get('presensi', DaftarPresensi::class)
     ->middleware(['auth', 'verified'])
     ->name('presensi');
 
+Route::post('/process-qr-code', 'QRCodeController@processQRCode');
+
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
