@@ -4,14 +4,16 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Presensi;
+use Livewire\Attributes\On;
 
 class Scan extends Component
 {
     public $scan;
 
-    protected $listener = ['getScanResult'];
+    #[On('getScanResult')]
     public function getScanResult($value)
     {
+        dd($value);
         if (!isnull($value)) {
             $this->scan = $value;
         }
