@@ -88,7 +88,8 @@
                     <button wire:click="update"
                         class="w-full bg-green-500 text-white rounded shadow py-3">Update</button>
                 @else
-                    <button wire:click="save" class="w-full bg-blue-500 text-white rounded shadow py-3">Save</button>
+                    {{-- <button wire:click="save" class="w-full bg-blue-500 text-white rounded shadow py-3">Save</button> --}}
+                    <button wire:click="save" class="btn btn-primary">Save</button>
                 @endif
                 <button wire:click="cancel" class="w-full bg-black text-white rounded shadow py-3">Cancel</button>
             </div>
