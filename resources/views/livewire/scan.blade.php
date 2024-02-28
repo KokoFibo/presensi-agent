@@ -5,7 +5,7 @@
     <input type="text" wire:model.live='scan'>
 
 
-    <div id="reader" width="600px" class="bg-gray-700 text-white"></div>
+    <div id="reader" width="600px"></div>
 
 
     @section('script')
