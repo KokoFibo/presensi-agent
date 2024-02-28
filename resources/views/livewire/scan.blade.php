@@ -15,8 +15,9 @@
                 // handle the scanned code as you like, for example:
                 // console.log(`Code matched = ${decodedText}`, decodedResult);
                 // alert(`Code matched = ${decodedText}`, decodedResult);
-                alert(decodedText);
+                // alert(decodedText);
                 document.getElementById('scanResult').value = decodedText;
+                Livewire.emit('getScanResult', decodedText);
                 html5QrcodeScanner.clear();
             }
 
