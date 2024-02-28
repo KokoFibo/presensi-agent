@@ -12,8 +12,7 @@ class QRCodeController extends Controller
 {
     public function index()
     {
-
-        $data = Presensi::where('user_id', auth()->user()->id)->whereDate('check_in', '2024-02-28')->first();
+        $data = Presensi::where('user_id', auth()->user()->id)->whereDate('check_in', Carbon::parse(now())->toDateString())->first();
         $date_check_in = '';
         $time_check_in = '';
         $location_check_in = '';
@@ -23,13 +22,11 @@ class QRCodeController extends Controller
             $location_data = Location::find($data->location_id);
             $location_check_in = $location_data->location;
         }
-
         return view('scan', [
             'data' => $data,
             'date_check_in' => $date_check_in,
             'time_check_in' => $time_check_in,
             'location_check_in' => $location_check_in,
-
         ]);
     }
 
@@ -41,7 +38,7 @@ class QRCodeController extends Controller
         $msg_type = 'success';
         $string = [];
         $string = explode(',', $request->scanResult);
-        $check_data = Presensi::where('check_in', $string[1])->orderBy('check_in', 'desc')->first();
+        $check_data = Presensi::where('check_in', $string[1])->first();
 
         if ($check_data == null) {
             $data = new Presensi;
@@ -53,10 +50,6 @@ class QRCodeController extends Controller
             $msg = 'Scanned Already';
             $msg_type = 'error';
         }
-
-
-        // return response()->json(['success' => true, 'qr_code_data' => $qrCodeData]);
-        // return back()->with(array('msg' => $msg, 'msg_type' => $msg_type));
         return Redirect::back()->with(['msg' => $msg]);
     }
 }

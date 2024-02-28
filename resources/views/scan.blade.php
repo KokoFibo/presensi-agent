@@ -14,10 +14,10 @@
         <button class="bg-blue-500 text-white px-3 py-2" @click="startScan()">Scan QR Code ini</button>
         <form action="/process-qr-code" method="POST" id="form">
             @csrf
-            <input type="text" wire:model.live="scan" id="scanResult" name="scanResult">
+            <input type="hidden" wire:model.live="scan" id="scanResult" name="scanResult">
         </form>
         @if ($data != null)
-            <div>
+            <div class="lg:w-1/5 mx-auto">
                 <h4>Checked in</h4>
                 <p>Date : {{ $date_check_in }}</p>
                 <p>Time : {{ $time_check_in }}</p>
@@ -26,7 +26,7 @@
         @endif
 
 
-        <button @click="test()" class="btn btn-primary">Test emit</button>
+        {{-- <button @click="test()" class="btn btn-primary">Test emit</button> --}}
 
         <div id="reader" width="600px"></div>
         @if (Session::has('msg'))
@@ -36,7 +36,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>Data Scanned</span>
+                <span>Data already Scanned</span>
             </div>
         @endif
 
