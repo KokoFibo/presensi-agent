@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Carbon\Carbon;
 use Livewire\Component;
+use App\Models\Location;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class GenerateQr extends Component
@@ -17,9 +18,8 @@ class GenerateQr extends Component
     public function generate()
     {
         $mytime = Carbon::now();
-
-        $this->string = $mytime->toDateTimeString();
-        $this->formattedString = $mytime->toDateTimeString();
+        $this->string = auth()->user()->location_id . ',' . $mytime->toDateTimeString();
+        // $this->formattedString = $mytime->toDateTimeString();
         // $this->formattedString = $mytime->toDayDateTimeString();
 
         // $this->formattedString = date('d-M-Y', strtotime($this->string));
