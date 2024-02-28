@@ -11,12 +11,15 @@ class QRCodeController extends Controller
     {
         $string = [];
         $string = explode(',', $request->scanResult);
-        $data = new Presensi;
-        $data->user_id = auth()->user()->id;
-        $data->location_id = $string[0];
-        $data->check_in = $string[1];
-        $data->save();
-        $qrCodeData = $request->input('qr_code_data');
+        $check_data = Presensi::where('check_in', $string[1])->first();
+        if ($check_data == null) {
+            $data = new Presensi;
+            $data->user_id = auth()->user()->id;
+            $data->location_id = $string[0];
+            $data->check_in = $string[1];
+            $data->save();
+            $qrCodeData = $request->input('qr_code_data');
+        }
 
 
         // return response()->json(['success' => true, 'qr_code_data' => $qrCodeData]);
