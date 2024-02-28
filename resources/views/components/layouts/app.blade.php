@@ -23,11 +23,7 @@
 
 
 </head>
-<style>
-    button {
-        /* color: white !important; */
-    }
-</style>
+
 
 <body style="font-family: Nunito, sans-serif;">
     <div class="min-h-screen bg-gray-100">
@@ -49,7 +45,6 @@
         </main>
     </div>
 </body>
-<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
-@yield('script')
+
 
 </html>

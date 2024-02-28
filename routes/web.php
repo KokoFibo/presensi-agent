@@ -40,15 +40,21 @@ Route::get('qrcode', GenerateQr::class)
     ->middleware(['auth', 'verified'])
     ->name('qrcode');
 
-Route::get('scan', Scan::class)
-    ->middleware(['auth', 'verified'])
-    ->name('scan');
+// ini yg livewire
+// Route::get('scan', Scan::class)
+//     ->middleware(['auth', 'verified'])
+//     ->name('scan');
+
+
 
 Route::get('presensi', DaftarPresensi::class)
     ->middleware(['auth', 'verified'])
     ->name('presensi');
 
 Route::post('/process-qr-code', [QRCodeController::class, 'processQRCode'])->name('savescan');
+
+Route::get('/scan', [QRCodeController::class, 'index'])->name('scan');
+
 
 
 
