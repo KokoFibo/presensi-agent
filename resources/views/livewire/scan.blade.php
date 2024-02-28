@@ -1,4 +1,14 @@
 <div class="flex justify-center flex-col p-3 xl-w-1/4 mx-auto gap-5 mt-5">
+    @if (isset($msg))
+        @if ($msg_type == 'error')
+            <div id="alert" class="alert alert-danger" role="alert">{{ $msg }}</div>
+        @else
+            <div id="alert" class="alert alert-success" role="alert">{{ $msg }}</div>
+        @endif
+        <script>
+            setTimeout("document.getElementById('mensajecarrito').style.display='none'", 6000);
+        </script>
+    @endif
     <h1 class="text-center">Please Activate your camera to start scanning!!</h1>
 
     <button class="bg-blue-500 text-white px-3 py-2" @click="startScan()">Scan QR Code ini</button>

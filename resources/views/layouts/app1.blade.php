@@ -31,11 +31,11 @@
 
         <!-- Page Content -->
         <main>
-            {{ $slot }}
+            @yield('main')
         </main>
     </div>
-    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
-    @yield('script')
 </body>
+<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+@yield('script')
 
 </html>
