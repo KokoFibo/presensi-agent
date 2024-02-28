@@ -1,10 +1,9 @@
 <div class="flex justify-center flex-col p-3 xl-w-1/4 mx-auto gap-5 mt-5">
     <h1 class="text-center">Please Activate your camera to start scanning!!</h1>
 
-    <button id="scanButton" class="bg-blue-500 text-white px-3 py-2 rounded shadow">Scan QR Code</button>
+    <button class="btn btn-primary " @click="startScan()">Scan QR Code ini</button>
     <input type="text" wire:model.live='scan'>
-    <button class="btn btn-primary ">Scan QR Code</button>
-    <p>{{ $scan }}</p>
+
 
     <div id="reader" width="600px" class="bg-gray-700 text-white"></div>
 
@@ -23,17 +22,19 @@
                 console.warn(`Code scan error = ${error}`);
             }
 
-            let html5QrcodeScanner = new Html5QrcodeScanner(
-                "reader", {
-                    fps: 10,
-                    qrbox: {
-                        width: 250,
-                        height: 250
-                    }
-                },
-                /* verbose= */
-                false);
-            html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+            function startScan() {
+                let html5QrcodeScanner = new Html5QrcodeScanner(
+                    "reader", {
+                        fps: 10,
+                        qrbox: {
+                            width: 250,
+                            height: 250
+                        }
+                    },
+                    /* verbose= */
+                    false);
+                html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+            }
         </script>
     @endsection
 
