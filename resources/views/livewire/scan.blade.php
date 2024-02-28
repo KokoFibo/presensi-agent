@@ -1,7 +1,7 @@
 <div class="flex justify-center flex-col p-3 xl-w-1/4 mx-auto gap-5 mt-5">
     <h1 class="text-center">Please Activate your camera to start scanning!!</h1>
 
-    <button class="btn btn-primary " @click="startScan()">Scan QR Code ini</button>
+    <button class="bg-blue-500 text-white px-3 py-2" @click="startScan()">Scan QR Code ini</button>
     <input type="text" wire:model.live='scan'>
 
 
@@ -13,7 +13,9 @@
             function onScanSuccess(decodedText, decodedResult) {
                 // handle the scanned code as you like, for example:
                 console.log(`Code matched = ${decodedText}`, decodedResult);
-                alert(`Code matched = ${decodedText}`, decodedResult);
+                html5QrcodeScanner.clear();
+                // alert(`Code matched = ${decodedText}`, decodedResult);
+                alert(decodedText);
             }
 
             function onScanFailure(error) {
