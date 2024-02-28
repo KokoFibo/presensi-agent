@@ -20,10 +20,15 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
-</head>
+
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
 
 </head>
+<style>
+    button {
+        color: white !important;
+    }
+</style>
 
 <body style="font-family: Nunito, sans-serif;">
     <div class="min-h-screen bg-gray-100">
@@ -40,6 +45,7 @@
 
         <!-- Page Content -->
         <main>
+
             {{ $slot }}
         </main>
     </div>
