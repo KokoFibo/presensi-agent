@@ -7,6 +7,14 @@
         @csrf
         <input type="text" wire:model.live="scan" id="scanResult" name="scanResult">
     </form>
+    @if ($data != null)
+        <div>
+            <h4>Checked in</h4>
+            <p>Date : {{ $date_check_in }}</p>
+            <p>Time : {{ $time_check_in }}</p>
+            <p>Location : {{ $location_check_in }}</p>
+        </div>
+    @endif
 
 
     <button @click="test">Test emit</button>
@@ -18,7 +26,7 @@
         {{-- @script --}}
         <script>
             function test() {
-                document.getElementById('scanResult').value = 'test aja';
+                document.getElementById('scanResult').value = '1,2024-02-28 07:43:47';
                 document.getElementById('form').submit();
 
             }

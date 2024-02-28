@@ -9,7 +9,7 @@
             {{ $qrcode }}
         </div>
         <div class="text-center mt-5">
-            <span class="text-semibold text-xl">{{ $formattedString }}</span>
+            <span class="text-semibold text-xl">{{ $string }}</span>
         </div>
     @else
         <div class="text-center mt-5">
