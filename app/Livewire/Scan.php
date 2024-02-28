@@ -50,6 +50,7 @@ class Scan extends Component
         $data = Presensi::where('user_id', auth()->user()->id)->whereDate('check_in', '2024-02-28')->first();
         $date_check_in = '';
         $time_check_in = '';
+        $location_check_in = '';
         if ($data) {
             $date_check_in = Carbon::parse($data->check_in)->toDateString();
             $time_check_in = Carbon::parse($data->check_in)->toTimeString();
