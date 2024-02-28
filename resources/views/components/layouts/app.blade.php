@@ -25,7 +25,7 @@
 </head>
 <style>
     button {
-        color: white !important;
+        /* color: white !important; */
     }
 </style>
 

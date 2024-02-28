@@ -21,6 +21,7 @@ class Scan extends Component
 
     public function updatedScan()
     {
+        dd('123');
         // $is_checkIn = null;
         // $is_checkIn = Presensi::where('user_id', auth()->user()->id)->whereDate('check_in', '2024-02-22')->first();
         // if ($is_checkIn == null) {
