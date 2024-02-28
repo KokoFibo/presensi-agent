@@ -8,11 +8,13 @@ class QRCodeController extends Controller
 {
     public function processQRCode(Request $request)
     {
+        $data = new Presensi;
+        $data->user_id = auth()->user()->id;
+        $data->check_in = $request->scanResult;
+        $data->save();
         $qrCodeData = $request->input('qr_code_data');
 
-        // Process the QR code data
 
-        dd($qrCodeData);
         return response()->json(['success' => true, 'qr_code_data' => $qrCodeData]);
     }
 }

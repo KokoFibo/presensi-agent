@@ -7,6 +7,7 @@ use App\Livewire\Locationwr;
 use App\Livewire\Registration;
 use App\Livewire\DaftarPresensi;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QRCodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +48,9 @@ Route::get('presensi', DaftarPresensi::class)
     ->middleware(['auth', 'verified'])
     ->name('presensi');
 
-Route::post('/process-qr-code', 'QRCodeController@processQRCode');
+Route::post('/process-qr-code', [QRCodeController::class, 'processQRCode'])->name('savescan');
+
+
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])

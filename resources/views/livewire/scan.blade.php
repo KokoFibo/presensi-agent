@@ -2,22 +2,35 @@
     <h1 class="text-center">Please Activate your camera to start scanning!!</h1>
 
     <button class="bg-blue-500 text-white px-3 py-2" @click="startScan()">Scan QR Code ini</button>
-    <input type="text" wire:model.live='scan' id="scanResult" name="scanResult">
-
     <p>Data yg di scan adalah: {{ $scan }}</p>
+    <form action="/process-qr-code" method="POST" id="form">
+        @csrf
+        <input type="text" wire:model.live="scan" id="scanResult" name="scanResult">
+    </form>
+
+
+    <button @click="test">Test emit</button>
 
     <div id="reader" width="600px"></div>
 
 
     @section('script')
+        {{-- @script --}}
         <script>
+            function test() {
+                document.getElementById('scanResult').value = 'test aja';
+                document.getElementById('form').submit();
+
+            }
+
             function onScanSuccess(decodedText, decodedResult) {
                 // handle the scanned code as you like, for example:
                 // console.log(`Code matched = ${decodedText}`, decodedResult);
                 // alert(`Code matched = ${decodedText}`, decodedResult);
                 // alert(decodedText);
                 document.getElementById('scanResult').value = decodedText;
-                Livewire.emit('getScanResult', decodedText);
+                document.getElementById('form').submit();
+                // $wire.on('getScanResult', decodedText);
                 html5QrcodeScanner.clear();
             }
 
@@ -41,6 +54,7 @@
                 html5QrcodeScanner.render(onScanSuccess, onScanFailure);
             }
         </script>
+        {{-- @endscript --}}
     @endsection
 
 </div>
