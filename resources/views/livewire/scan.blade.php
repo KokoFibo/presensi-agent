@@ -14,10 +14,10 @@
             function onScanSuccess(decodedText, decodedResult) {
                 // handle the scanned code as you like, for example:
                 console.log(`Code matched = ${decodedText}`, decodedResult);
-                // html5QrcodeScanner.clear();
-                alert(`Code matched = ${decodedText}`, decodedResult);
-                // alert(decodedText);
-                // document.getElementById('scanResult').value = decodedText;
+                // alert(`Code matched = ${decodedText}`, decodedResult);
+                alert(decodedText);
+                document.getElementById('scanResult').value = decodedText;
+                html5QrcodeScanner.clear();
             }
 
             function onScanFailure(error) {
