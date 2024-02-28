@@ -3,62 +3,35 @@
 
     <button id="scanButton" class="bg-blue-500 text-white px-3 py-2 rounded shadow">Scan QR Code</button>
     <input type="text" wire:model.live='scan'>
-
+    <button class="btn btn-primary ">Scan QR Code</button>
     <p>{{ $scan }}</p>
 
-    <script>
-        document.getElementById('scanButton').addEventListener('click', function() {
-            // Start QR code scanning
-            Quagga.init({
-                inputStream: {
-                    name: "Live",
-                    type: "LiveStream",
-                    target: document.querySelector('#scanner-container'),
-                    constraints: {
-                        width: 480,
-                        height: 320,
-                        facingMode: "environment" // or "user" for front camera
-                    },
-                },
-                decoder: {
-                    readers: ["code_128_reader"] // You can specify different barcode formats
-                }
-            }, function(err) {
-                if (err) {
-                    console.error(err);
-                    return;
-                }
-                Quagga.start();
-            });
+    <div id="reader" width="600px"></div>
 
-            Quagga.onDetected(function(data) {
-                var qrCodeData = data.codeResult.code;
-                // Send the QR code data to the server via AJAX
-                // Example AJAX request to send the QR code data to a Laravel route
-                fetch('/process-qr-code', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token if using Laravel CSRF protection
-                        },
-                        body: JSON.stringify({
-                            qr_code_data: qrCodeData
-                        })
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        // Handle response from the server
-                        console.log(data);
-                    })
-                    .catch(error => {
-                        console.error('There was a problem with your fetch operation:', error);
-                    });
-            });
-        });
+
+    <script>
+        function onScanSuccess(decodedText, decodedResult) {
+            // handle the scanned code as you like, for example:
+            console.log(`Code matched = ${decodedText}`, decodedResult);
+            alert(`Code matched = ${decodedText}`, decodedResult);
+        }
+
+        function onScanFailure(error) {
+            // handle scan failure, usually better to ignore and keep scanning.
+            // for example:
+            console.warn(`Code scan error = ${error}`);
+        }
+
+        let html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader", {
+                fps: 10,
+                qrbox: {
+                    width: 250,
+                    height: 250
+                }
+            },
+            /* verbose= */
+            false);
+        html5QrcodeScanner.render(onScanSuccess, onScanFailure);
     </script>
 </div>
