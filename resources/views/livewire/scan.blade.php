@@ -17,7 +17,7 @@
                 html5QrcodeScanner.clear();
                 // alert(`Code matched = ${decodedText}`, decodedResult);
                 alert(decodedText);
-                document.getElementById('scanResult').value = decodedText;
+                // document.getElementById('scanResult').value = decodedText;
             }
 
             function onScanFailure(error) {
