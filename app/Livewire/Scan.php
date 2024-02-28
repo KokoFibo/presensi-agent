@@ -9,6 +9,14 @@ class Scan extends Component
 {
     public $scan;
 
+    protected $listener = ['getScanResult'];
+    public function getScanResult($value)
+    {
+        if (!isnull($value)) {
+            $this->scan = $value;
+        }
+    }
+
     public function updatedScan()
     {
         // $is_checkIn = null;
