@@ -2,9 +2,9 @@
     <h1 class="text-center">Please Activate your camera to start scanning!!</h1>
 
     <button class="bg-blue-500 text-white px-3 py-2" @click="startScan()">Scan QR Code ini</button>
-    <input type="text" wire:model.live='scan'>
+    <input type="text" wire:model.live='scan' id="scanResult">
 
-    <p id="scanResult"></p>
+
 
     <div id="reader" width="600px"></div>
 
