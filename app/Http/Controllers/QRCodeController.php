@@ -41,7 +41,7 @@ class QRCodeController extends Controller
         $msg_type = 'success';
         $string = [];
         $string = explode(',', $request->scanResult);
-        $check_data = Presensi::where('check_in', $string[1])->first();
+        $check_data = Presensi::where('check_in', $string[1])->orderBy('check_in', 'desc')->first();
 
         if ($check_data == null) {
             $data = new Presensi;
