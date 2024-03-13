@@ -133,7 +133,7 @@
                                 {{ $user->unit }}</td>
                             <td scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $user->location_id }}</td>
+                                {{ $user->location->location_name }}</td>
                             <td scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <button wire:click="edit({{ $user->id }})" class="text-green-500">Edit</button> |

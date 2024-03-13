@@ -6,6 +6,7 @@ use App\Models\User;
 use Livewire\Component;
 use App\Models\Location;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Routing\Middleware\ThrottleRequestsWithRedis;
@@ -123,6 +124,12 @@ class Registration extends Component
         $units = User::whereIn('level', ['AAD', 'AD'])->get();
         $locations = Location::all();
         $users = User::orderBy('id', 'desc')->paginate(5);
+
+        // $users = DB::table('users')->join('locations', 'locations.id', '=', 'users.location_id')
+        //     ->select('users.*', 'locations.*')
+        //     ->orderBy('users.id', 'desc')->paginate(5);
+
+        // dd($users->all());
         return view('livewire.registration', [
             'users' => $users,
             'units' => $units,
