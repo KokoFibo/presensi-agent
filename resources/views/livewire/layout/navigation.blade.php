@@ -144,6 +144,9 @@ new class extends Component {
                 <x-responsive-nav-link :href="route('scan')" wire:navigate>
                     {{ __('Scan') }}
                 </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('scan2')" wire:navigate>
+                    {{ __('Scan2') }}
+                </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('registration')" wire:navigate>
                     {{ __('Registration') }}
                 </x-responsive-nav-link>
