@@ -38,6 +38,11 @@ new class extends Component {
                         {{ __('Scan') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('scan2')" :active="request()->routeIs('scan2')" wire:navigate>
+                        {{ __('Scan2') }}
+                    </x-nav-link>
+                </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('registration')" :active="request()->routeIs('registration')" wire:navigate>

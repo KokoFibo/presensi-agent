@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Location extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['location'];
+    protected $fillable = ['location_name'];
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->hasMany(User::class);
     }
 }
