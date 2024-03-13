@@ -1,7 +1,6 @@
 <div>
     scan 2
     <video id="preview"></video>
-
     <script type="text/javascript">
         let scanner = new Instascan.Scanner({
             video: document.getElementById('preview')
