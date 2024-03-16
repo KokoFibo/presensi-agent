@@ -3,7 +3,7 @@
 
 
     @if ($data == null || $durasi >= 1)
-        
+
 
         @if (!$is_checkedOut)
             <button class="px-3 py-2 text-white bg-blue-500" onclick="startScan()">Please Scan QR to
@@ -95,9 +95,6 @@
         <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     @endsection
     <script>
-        <script type="text/javascript" src="instascan.min.js"></script>
-        <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
-        
         function startScan() {
             Instascan.Camera.getCameras().then(function(cameras) {
                 if (cameras.length > 0) {
