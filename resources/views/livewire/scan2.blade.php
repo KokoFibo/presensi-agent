@@ -88,7 +88,7 @@
         function startScan() {
             Instascan.Camera.getCameras().then(function(cameras) {
                 if (cameras.length > 0) {
-                    scanner.start(cameras[4]);
+                    scanner.start(cameras[2]);
                 } else {
                     console.error('No cameras found.');
                 }
@@ -108,7 +108,7 @@
 
                     Instascan.Camera.getCameras().then(function(cameras) {
                         if (cameras.length > 0) {
-                            scanner.stop(cameras[4]);
+                            scanner.stop(cameras[2]);
                         } else {
                             console.error('No cameras found.');
                         }
