@@ -1,7 +1,9 @@
 <div class="flex flex-col justify-center gap-5 p-3 mx-auto mt-5 xl:w-1/4">
     <video id="preview"></video>
 
-    @if ($data == null || $durasi >= 2)
+
+    @if ($data == null || $durasi >= 1)
+        
 
         @if (!$is_checkedOut)
             <button class="px-3 py-2 text-white bg-blue-500" onclick="startScan()">Please Scan QR to
@@ -18,12 +20,16 @@
         <div>
             @if ($is_checkedIn && $is_checkedOut == false)
                 <div class="p-4 bg-gray-100 rounded-lg shadow-md">
-                    <h4 class="text-lg font-semibold mb-4">Checked In</h4>
+
+                    <h4 class="mb-4 text-lg font-semibold">Checked In</h4>
+
                     <table class="w-full">
                         <tbody>
                             <tr>
                                 <td class="font-semibold">Date</td>
-                                <td>{{ format_tgl($date_check_in) }}</td>
+
+                                <td>{{ $date_check_in }}</td>
+
                             </tr>
                             <tr>
                                 <td class="font-semibold">Time</td>
@@ -46,12 +52,16 @@
 
             @if ($is_checkedIn && $is_checkedOut == true)
                 <div class="p-4 bg-gray-100 rounded-lg shadow-md">
-                    <h4 class="text-lg font-semibold mb-4">Check Out</h4>
+
+                    <h4 class="mb-4 text-lg font-semibold">Check Out</h4>
+
                     <table class="w-full">
                         <tbody>
                             <tr>
                                 <td class="font-semibold">Date</td>
-                                <td>{{ format_tgl($date_check_out) }}</td>
+
+                                <td>{{ $date_check_out }}</td>
+
                             </tr>
                             <tr>
                                 <td class="font-semibold">Time</td>
@@ -88,7 +98,7 @@
         function startScan() {
             Instascan.Camera.getCameras().then(function(cameras) {
                 if (cameras.length > 0) {
-                    scanner.start(cameras[2]);
+                    scanner.start(cameras[0]);
                 } else {
                     console.error('No cameras found.');
                 }
@@ -109,7 +119,7 @@
 
                     Instascan.Camera.getCameras().then(function(cameras) {
                         if (cameras.length > 0) {
-                            scanner.stop(cameras[2]);
+                            scanner.stop(cameras[0]);
                         } else {
                             console.error('No cameras found.');
                         }
