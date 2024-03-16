@@ -53,7 +53,7 @@
             @if ($is_checkedIn && $is_checkedOut == true)
                 <div class="p-4 bg-gray-100 rounded-lg shadow-md">
 
-                    <h4 class="mb-4 text-lg font-semibold">Check Out</h4>
+                    <h4 class="mb-4 text-lg font-semibold">Checked Out</h4>
 
                     <table class="w-full">
                         <tbody>
