@@ -34,11 +34,13 @@ new class extends Component {
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+
                     <x-nav-link :href="route('scan')" :active="request()->routeIs('scan')" wire:navigate>
                         {{ __('Scan') }}
                     </x-nav-link>
                 </div>
-               
+
+
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('registration')" :active="request()->routeIs('registration')" wire:navigate>
@@ -137,10 +139,12 @@ new class extends Component {
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
+
                 <x-responsive-nav-link :href="route('scan')" wire:navigate>
                     {{ __('Scan') }}
                 </x-responsive-nav-link>
                
+
                 <x-responsive-nav-link :href="route('qrcode')" wire:navigate>
                     {{ __('Generate QR Code') }}
                 </x-responsive-nav-link>

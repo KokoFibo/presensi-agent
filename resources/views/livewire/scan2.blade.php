@@ -1,10 +1,13 @@
 <div class="flex flex-col justify-center gap-5 p-3 mx-auto mt-5 xl:w-1/4">
     <video id="preview"></video>
 
+
     @if ($data == null || $durasi >= 1)
         
+
         @if (!$is_checkedOut)
-            <button class="px-3 py-2 text-white bg-blue-500" onclick="startScan()">Scan QR to {{ $check_in_out }}</button>
+            <button class="px-3 py-2 text-white bg-blue-500" onclick="startScan()">Please Scan QR to
+                {{ $check_in_out }}</button>
             <form action="/process-qr-code" method="POST" id="form">
                 @csrf
                 <input type="hidden" wire:model.live="scan" id="scanResult" name="scanResult">
@@ -17,12 +20,16 @@
         <div>
             @if ($is_checkedIn && $is_checkedOut == false)
                 <div class="p-4 bg-gray-100 rounded-lg shadow-md">
+
                     <h4 class="mb-4 text-lg font-semibold">Checked In</h4>
+
                     <table class="w-full">
                         <tbody>
                             <tr>
                                 <td class="font-semibold">Date</td>
+
                                 <td>{{ $date_check_in }}</td>
+
                             </tr>
                             <tr>
                                 <td class="font-semibold">Time</td>
@@ -45,12 +52,16 @@
 
             @if ($is_checkedIn && $is_checkedOut == true)
                 <div class="p-4 bg-gray-100 rounded-lg shadow-md">
+
                     <h4 class="mb-4 text-lg font-semibold">Check Out</h4>
+
                     <table class="w-full">
                         <tbody>
                             <tr>
                                 <td class="font-semibold">Date</td>
+
                                 <td>{{ $date_check_out }}</td>
+
                             </tr>
                             <tr>
                                 <td class="font-semibold">Time</td>
@@ -73,10 +84,7 @@
 
         </div>
     @endif
-    <div>
-        
-    </div>
-    <div id="result"></div>
+
 
 
 
@@ -99,7 +107,8 @@
             });
 
             let scanner = new Instascan.Scanner({
-                video: document.getElementById('preview')
+                video: document.getElementById('preview'),
+                mirror: false
             });
             scanner.addListener('scan', function(content) {
                 console.log(content);
