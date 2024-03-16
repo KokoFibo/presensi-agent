@@ -34,11 +34,18 @@ class QRCodeController extends Controller
     public function processQRCode(Request $request)
     {
 
+        $now = Carbon::parse(Carbon::now())->toDateString();
         $msg = 'ok';
         $msg_type = 'success';
         $string = [];
         $string = explode(',', $request->scanResult);
-        $check_data = Presensi::where('check_in', $string[1])->first();
+        $check_data = Presensi::whereDate('created_at', $now)->where('check_in','!=','')->where('user_id', auth()->user()->id)->first();
+        if($check_data) {
+            if(Presensi::whereDate('created_at', $now)->where('check_in','!=','')->where('check_out','!=','')->where('user_id', auth()->user()->id)->first()) {
+                dd('scan in dan out');
+                return  Redirect::back()->with(['msg' => 'sdh scan in dan out']);
+            }
+        }
 
         if ($check_data == null) {
             $data = new Presensi;
@@ -49,7 +56,17 @@ class QRCodeController extends Controller
             $qrCodeData = $request->input('qr_code_data');
             $msg = 'Scanned Already';
             $msg_type = 'error';
+        } else {
+            $data = Presensi::find($check_data->id);
+            $data->user_id = auth()->user()->id;
+            $data->location_id = $string[0];
+            $data->check_out = $string[1];
+            $data->save();
+            $qrCodeData = $request->input('qr_code_data');
+            $msg = 'Check_out  Already';
+            $msg_type = 'error';
         }
         return Redirect::back()->with(['msg' => $msg]);
     }
 }
+
