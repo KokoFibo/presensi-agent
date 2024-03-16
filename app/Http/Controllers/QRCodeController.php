@@ -39,9 +39,18 @@ class QRCodeController extends Controller
         $msg_type = 'success';
         $string = [];
         $string = explode(',', $request->scanResult);
-        $check_data = Presensi::whereDate('created_at', $now)->where('check_in','!=','')->where('user_id', auth()->user()->id)->first();
-        if($check_data) {
-            if(Presensi::whereDate('created_at', $now)->where('check_in','!=','')->where('check_out','!=','')->where('user_id', auth()->user()->id)->first()) {
+        if (count($string) != 2) {
+           
+            return Redirect::back()->with(['msg' => 'Wrong Barcode']);
+        } else if (Carbon::parse($string[1])->toDateString() != $now) {
+            // dd('Barcode Expired');
+            return Redirect::back()->with(['msg' => 'Barcode Expired']);
+        }
+
+
+        $check_data = Presensi::whereDate('created_at', $now)->where('check_in', '!=', '')->where('user_id', auth()->user()->id)->first();
+        if ($check_data) {
+            if (Presensi::whereDate('created_at', $now)->where('check_in', '!=', '')->where('check_out', '!=', '')->where('user_id', auth()->user()->id)->first()) {
                 dd('scan in dan out');
                 return  Redirect::back()->with(['msg' => 'sdh scan in dan out']);
             }
@@ -69,4 +78,3 @@ class QRCodeController extends Controller
         return Redirect::back()->with(['msg' => $msg]);
     }
 }
-

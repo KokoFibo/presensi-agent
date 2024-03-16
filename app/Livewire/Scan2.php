@@ -83,8 +83,10 @@ class Scan2 extends Component
             $date_check_out = Carbon::parse($data->check_out)->toDateString();
             $time_check_out = Carbon::parse($data->check_out)->toTimeString();
             $location_data = Location::find($data->location_id);
-            $location_check_in = $location_data->location;
-            $location_check_out = $location_data->location;
+            // $location_check_in = $location_data->location;
+            // $location_check_out = $location_data->location;
+            $location_check_in = $data->location_id;
+            $location_check_out = $data->location_id;
             $durasi = $this->durasiCheckedIn($data->created_at);
         } else {
             $durasi = 0;
