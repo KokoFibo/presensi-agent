@@ -21,21 +21,7 @@ class Scan2 extends Component
         }
     }
 
-    public function durasiCheckedIn($waktu)
-    {
 
-        $chekedIn =  Carbon::parse($waktu);
-        $jamSekarang = Carbon::now();
-        return $chekedIn->diffInMinutes($jamSekarang);
-    }
-
-    public function durasiAbsen($waktu1, $waktu2)
-    {
-
-        $chekedIn =  Carbon::parse($waktu1);
-        $chekedOut =  Carbon::parse($waktu2);
-        return $chekedIn->diffInMinutes($chekedOut);
-    }
 
     public function updatedScan()
     {
@@ -83,26 +69,27 @@ class Scan2 extends Component
             $date_check_out = Carbon::parse($data->check_out)->toDateString();
             $time_check_out = Carbon::parse($data->check_out)->toTimeString();
             $location_data = Location::find($data->location_id);
+
             // $location_check_in = $location_data->location;
             // $location_check_out = $location_data->location;
             $location_check_in = $data->location_id;
             $location_check_out = $data->location_id;
             $durasi = $this->durasiCheckedIn($data->created_at);
+
         } else {
             $durasi = 0;
         }
         $sekarang = Carbon::now();
 
-       
 
-        if($data) {
+
+        if ($data) {
             $is_checkedIn = true;
             $check_in_out = "Check Out";
-            if ($data->check_out != ''){
+            if ($data->check_out != '') {
                 $is_checkedOut = true;
-                $durasiAbsen = $this->durasiAbsen($data->check_in, $data->check_out);
-            } 
-            else $is_checkedOut = false;
+                $durasiAbsen = durasiAbsen($data->check_in, $data->check_out);
+            } else $is_checkedOut = false;
         } else {
             $is_checkedIn = false;
         }
