@@ -33,7 +33,6 @@ class QRCodeController extends Controller
 
     public function processQRCode(Request $request)
     {
-        dd('ok');
         $now = Carbon::parse(Carbon::now())->toDateString();
         $msg = 'ok';
         $msg_type = 'success';

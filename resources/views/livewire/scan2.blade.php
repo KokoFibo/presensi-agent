@@ -100,7 +100,7 @@
         function startScan() {
             Instascan.Camera.getCameras().then(function(cameras) {
                 if (cameras.length > 0) {
-                    scanner.start(cameras[2]);
+                    scanner.start(cameras[0]);
                 } else {
                     console.error('No cameras found.');
                 }
@@ -114,15 +114,15 @@
             });
 
             scanner.addListener('scan', function(content) {
+                console.log('ok');
                 console.log(content);
-                document.getElementById('result').innerHTML = content;
                 document.getElementById('scanResult').value = content;
                 document.getElementById('form').submit();
                 if (content != '') {
 
                     Instascan.Camera.getCameras().then(function(cameras) {
                         if (cameras.length > 0) {
-                            scanner.stop(cameras[2]);
+                            scanner.stop(cameras[0]);
                         } else {
                             console.error('No cameras found.');
                         }
