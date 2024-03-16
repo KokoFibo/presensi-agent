@@ -33,14 +33,14 @@ class QRCodeController extends Controller
 
     public function processQRCode(Request $request)
     {
-
+        dd('ok');
         $now = Carbon::parse(Carbon::now())->toDateString();
         $msg = 'ok';
         $msg_type = 'success';
         $string = [];
         $string = explode(',', $request->scanResult);
         if (count($string) != 2) {
-           
+
             return Redirect::back()->with(['msg' => 'Wrong Barcode']);
         } else if (Carbon::parse($string[1])->toDateString() != $now) {
             // dd('Barcode Expired');

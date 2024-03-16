@@ -110,6 +110,7 @@
                 video: document.getElementById('preview'),
                 mirror: false
             });
+
             scanner.addListener('scan', function(content) {
                 console.log(content);
                 document.getElementById('result').innerHTML = content;
