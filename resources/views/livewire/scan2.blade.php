@@ -95,6 +95,9 @@
         <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     @endsection
     <script>
+        <script type="text/javascript" src="instascan.min.js"></script>
+        <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+        
         function startScan() {
             Instascan.Camera.getCameras().then(function(cameras) {
                 if (cameras.length > 0) {
