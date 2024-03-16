@@ -9,6 +9,7 @@ use App\Livewire\DaftarPresensi;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QRCodeController;
 use App\Livewire\Scan2;
+use App\Livewire\Test;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,8 +55,10 @@ Route::get('presensi', DaftarPresensi::class)
 
 Route::post('/process-qr-code', [QRCodeController::class, 'processQRCode'])->name('savescan');
 
-Route::get('/scan', [QRCodeController::class, 'index'])->name('scan');
+// Route::get('/scan', [QRCodeController::class, 'index'])->name('scan');
 Route::get('/scan2', Scan2::class)->name('scan2');
+
+Route::get('/test', Test::class);
 
 // Route::get('/showqr', function () {
 //     return view('showqr');
