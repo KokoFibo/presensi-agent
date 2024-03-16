@@ -115,7 +115,6 @@
 
             scanner.addListener('scan', function(content) {
                 console.log(content);
-                document.getElementById('result').innerHTML = content;
                 document.getElementById('scanResult').value = content;
                 document.getElementById('form').submit();
                 if (content != '') {
