@@ -71,7 +71,6 @@
 
 
         function startScan() {
-            alert('ok');
             const html5QrCode = new Html5Qrcode("reader");
             const qrCodeSuccessCallback = (decodedText, decodedResult) => {
                 /* handle success */
@@ -86,7 +85,7 @@
 
             // If you want to prefer back camera
             html5QrCode.start({
-                facingMode: "environment"
+                facingMode: "user"
             }, config, qrCodeSuccessCallback);
         }
     </script>
