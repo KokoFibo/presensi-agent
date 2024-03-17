@@ -71,7 +71,6 @@
 
 
         function startScan() {
-            alert('ok');
             const html5QrCode = new Html5Qrcode("reader");
             const qrCodeSuccessCallback = (decodedText, decodedResult) => {
                 /* handle success */
