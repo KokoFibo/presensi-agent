@@ -23,8 +23,12 @@
 
 
 
+
+    </script>
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 
 
 </head>
@@ -48,9 +52,8 @@
             {{ $slot }}
         </main>
     </div>
+
     @yield('script')
-
-
 </body>
 
 
