@@ -22,9 +22,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'kode_agent',
         'level',
-        'role',
         'unit',
+        'location_id',
+        'role',
     ];
 
     public function location()
