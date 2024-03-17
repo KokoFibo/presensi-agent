@@ -1,23 +1,23 @@
 @extends('layouts.app1')
 @section('main')
     {{-- <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800">
             {{ __('Dashboard') }}
         </h2>
     </x-slot> --}}
 
-    <div class="flex justify-center flex-col p-3 xl-w-1/4 mx-auto gap-5 mt-5">
+    <div class="flex flex-col justify-center gap-5 p-3 mx-auto mt-5 xl-w-1/4">
 
 
         <h1 class="text-center">Please Activate your camera to start scanning !</h1>
 
-        <button class="bg-blue-500 text-white px-3 py-2" @click="startScan()">Scan QR Code ini</button>
+        <button class="px-3 py-2 text-white bg-blue-500" @click="startScan()">Scan QR Code ini</button>
         <form action="/process-qr-code" method="POST" id="form">
             @csrf
             <input type="hidden" wire:model.live="scan" id="scanResult" name="scanResult">
         </form>
         @if ($data != null)
-            <div class="lg:w-1/5 mx-auto">
+            <div class="mx-auto lg:w-1/5">
                 <h4>Checked in</h4>
                 <p>Date : {{ $date_check_in }}</p>
                 <p>Time : {{ $time_check_in }}</p>
@@ -31,7 +31,7 @@
         <div id="reader" width="600px"></div>
         @if (Session::has('msg'))
             <div role="alert" class="alert alert-error">
-                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-current shrink-0" fill="none"
                     viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -71,7 +71,6 @@
 
 
         function startScan() {
-
             const html5QrCode = new Html5Qrcode("reader");
             const qrCodeSuccessCallback = (decodedText, decodedResult) => {
                 /* handle success */
@@ -88,5 +87,7 @@
             html5QrCode.start({
                 facingMode: "environment"
             }, config, qrCodeSuccessCallback);
+        }
     </script>
+@endsection
 @endsection
