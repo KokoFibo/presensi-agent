@@ -77,7 +77,7 @@
                  * { id: "id", label: "label" }
                  */
                 if (devices && devices.length) {
-                    cameraId = devices[2].id;
+                    cameraId = devices[0].id;
                     // Initialize Html5Qrcode after getting cameraId
                     const html5QrCode = new Html5Qrcode("reader");
                     html5QrCode.start(
