@@ -68,21 +68,20 @@
                         <x-input-error :messages="$errors->get('role')" class="mt-2" />
                     </div>
                 @endif
-                @if ($role >= 1 && $is_update)
-                    <div class="block w-full px-4">
-                        <x-input-label :value="__('Location')" />
-                        <select wire:model.live="location_id"
-                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full">
 
-                            <option value=" ">Choose Location</option>
-                            @foreach ($locations as $location)
-                                <option value="{{ $location->id }}">{{ $location->location_name }}
-                                </option>
-                            @endforeach
-                        </select>
-                        <x-input-error :messages="$errors->get('location_id')" class="mt-2" />
-                    </div>
-                @endif
+                <div class="block w-full px-4">
+                    <x-input-label :value="__('Location')" />
+                    <select wire:model.live="location_id"
+                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full">
+
+                        <option value=" ">Choose Location</option>
+                        @foreach ($locations as $location)
+                            <option value="{{ $location->id }}">{{ $location->location_name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <x-input-error :messages="$errors->get('location_id')" class="mt-2" />
+                </div>
 
                 @if ($is_update)
                     <button wire:click="update"

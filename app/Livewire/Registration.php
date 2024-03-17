@@ -14,7 +14,7 @@ use Illuminate\Routing\Middleware\ThrottleRequestsWithRedis;
 class Registration extends Component
 {
     use WithPagination;
-    public $name, $email, $password, $level, $unit, $location_id, $role;
+    public $name, $email, $password, $level, $unit, $location_id, $role, $kode_agent;
     public $show, $is_update, $id;
 
 
@@ -37,10 +37,12 @@ class Registration extends Component
         $this->unit = $data->unit;
         $this->location_id = $data->location_id;
         $this->role = $data->role;
+        $this->kode_agent = $data->kode_agent;
     }
 
     public function update()
     {
+
         $this->validate();
         $data = User::find($this->id);
         $data->name = $this->name;
@@ -50,6 +52,7 @@ class Registration extends Component
         $data->unit = $this->unit;
         $data->location_id = $this->location_id;
         $data->role = $this->role;
+        $data->kode_agent = $this->kode_agent;
         $data->save();
         $this->reset();
 
@@ -95,10 +98,10 @@ class Registration extends Component
     protected $rules = [
         'name' => 'required|min:3',
         'password' => 'nullable|min:8',
+        'kode_agent' => 'nullable|numeric',
         'level' => 'required',
         'unit' => 'required_if:level,Agent',
         'email' => 'required|email',
-        'role' => 'nullable',
         'location_id' => 'nullable'
     ];
 
@@ -106,13 +109,17 @@ class Registration extends Component
 
     public function save()
     {
+
         $this->validate();
         $data = new User;
         $data->name = $this->name;
         $data->email = $this->email;
         $data->password = Hash::make($this->password);
         $data->level = $this->level;
+        $data->kode_agent = $this->kode_agent;
         $data->unit = $this->unit;
+        $data->location_id = $this->location_id;
+        $data->role = 0;
         $data->save();
         $this->reset();
         $this->show = false;
