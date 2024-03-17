@@ -2,6 +2,15 @@
 
 use Carbon\Carbon;
 
+function get_location($id)
+{
+    $data = Location::find($id);
+    if ($data != null) {
+        return $data->location_name;
+    } else {
+        return '';
+    }
+}
 function getRoleName($role_id)
 {
 
