@@ -46,6 +46,7 @@
                                 <td>{{ $durasi }} minutes</td>
                             </tr>
                         </tbody>
+
                     </table>
                 </div>
             @endif

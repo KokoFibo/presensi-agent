@@ -1,6 +1,26 @@
 <?php
+
 use Carbon\Carbon;
 
+function getRoleName($role_id)
+{
+
+    switch ($role_id) {
+        case 0:
+            $role = 'User';
+            break;
+        case 1:
+            $role = 'Admin';
+            break;
+        case 2:
+            $role = 'Super Admin';
+            break;
+        case 3:
+            $role = 'Developer';
+            break;
+    }
+    return $role;
+}
 
 function format_tgl($tgl)
 {
