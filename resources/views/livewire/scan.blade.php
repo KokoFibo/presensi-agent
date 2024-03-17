@@ -116,26 +116,14 @@
 
                 const html5QrCode = new Html5Qrcode("reader");
                 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-                    // if(decodedText != '') {
-                    // html5Qrcode.clear();
-
-
-                    // } else {
-
                     document.getElementById('scanResult').value = decodedText;
                     document.getElementById('form').submit();
-                    // $wire.on('getScanResult', decodedText);
-                    // html5Qrcode.clear();
-
+                    // stop camera from scanning
                     html5QrCode.stop().then((ignore) => {
                         // QR Code scanning is stopped.
                     }).catch((err) => {
                         // Stop failed, handle it.
                     });
-                    // }
-
-
-                    /* handle success */
                 };
                 const config = {
                     fps: 10,
@@ -150,14 +138,10 @@
                 //     facingMode: "user"
                 // }, config, qrCodeSuccessCallback);
 
-
-
                 // If you want to prefer back camera
                 html5QrCode.start({
                     facingMode: "environment"
                 }, config, qrCodeSuccessCallback);
-
-
             }
         </script>
     @endsection
