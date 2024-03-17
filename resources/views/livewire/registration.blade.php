@@ -76,7 +76,7 @@
 
                             <option value=" ">Choose Location</option>
                             @foreach ($locations as $location)
-                                <option value="{{ $location->id }}">{{ $location->location }}
+                                <option value="{{ $location->id }}">{{ $location->location_name }}
                                 </option>
                             @endforeach
                         </select>
@@ -116,6 +116,7 @@
                 <tbody>
                     @foreach ($users as $user)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+
                             <td scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $user->name }}</td>
@@ -127,13 +128,13 @@
                                 {{ $user->level }}</td>
                             <td scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $user->role }}</td>
+                                {{ getRoleName($user->role) }}</td>
                             <td scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $user->unit }}</td>
                             <td scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $user->location->location_name }}</td>
+                                {{ $user->location_name }}</td>
                             <td scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <button wire:click="edit({{ $user->id }})" class="text-green-500">Edit</button> |

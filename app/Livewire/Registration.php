@@ -123,11 +123,11 @@ class Registration extends Component
     {
         $units = User::whereIn('level', ['AAD', 'AD'])->get();
         $locations = Location::all();
-        $users = User::orderBy('id', 'desc')->paginate(5);
+        // $users = User::orderBy('id', 'desc')->paginate(5);
 
-        // $users = DB::table('users')->join('locations', 'locations.id', '=', 'users.location_id')
-        //     ->select('users.*', 'locations.*')
-        //     ->orderBy('users.id', 'desc')->paginate(5);
+        $users = DB::table('users')->join('locations', 'locations.id', '=', 'users.location_id')
+            ->select('users.*', 'locations.location_name')
+            ->orderBy('users.id', 'desc')->paginate(5);
 
         // dd($users->all());
         return view('livewire.registration', [
