@@ -114,7 +114,7 @@ class Registration extends Component
         $data = new User;
         $data->name = $this->name;
         $data->email = $this->email;
-        $data->password = Hash::make($this->password);
+        $data->password = Hash::make('12345678');
         $data->level = $this->level;
         $data->kode_agent = $this->kode_agent;
         $data->unit = $this->unit;
