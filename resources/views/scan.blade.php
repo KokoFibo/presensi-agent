@@ -68,19 +68,25 @@
             console.warn(`Code scan error = ${error}`);
         }
 
+
+
         function startScan() {
-            let html5QrcodeScanner = new Html5QrcodeScanner(
-                "reader", {
-                    fps: 10,
-                    qrbox: {
-                        width: 250,
-                        height: 250
-                    }
-                },
-                /* verbose= */
-                false);
-            html5QrcodeScanner.render(onScanSuccess, onScanFailure);
-        }
+
+            const html5QrCode = new Html5Qrcode("reader");
+            const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+                /* handle success */
+            };
+            const config = {
+                fps: 10,
+                qrbox: {
+                    width: 250,
+                    height: 250
+                }
+            };
+
+            // If you want to prefer back camera
+            html5QrCode.start({
+                facingMode: "environment"
+            }, config, qrCodeSuccessCallback);
     </script>
-@endsection
 @endsection
