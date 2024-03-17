@@ -68,8 +68,19 @@
             console.warn(`Code scan error = ${error}`);
         }
 
+
+
         function startScan() {
-            let cameraId;
+            let html5QrcodeScanner = new Html5QrcodeScanner(
+                "reader", {
+                    fps: 10,
+                    qrbox: {
+                        width: 250,
+                        height: 250
+                    }
+                },
+                false);
+            html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 
             Html5Qrcode.getCameras().then(devices => {
                 /**
@@ -77,26 +88,8 @@
                  * { id: "id", label: "label" }
                  */
                 if (devices && devices.length) {
-                    cameraId = devices[2].id;
-                    // Initialize Html5Qrcode after getting cameraId
-                    const html5QrCode = new Html5Qrcode("reader");
-                    html5QrCode.start(
-                            cameraId, {
-                                fps: 10, // Optional, frame per seconds for qr code scanning
-                                qrbox: {
-                                    width: 250,
-                                    height: 250
-                                } // Optional, if you want bounded box UI
-                            },
-                            (decodedText, decodedResult) => {
-                                // do something when code is read
-                            },
-                            (errorMessage) => {
-                                // parse error, ignore it.
-                            })
-                        .catch((err) => {
-                            // Start failed, handle it.
-                        });
+                    var cameraId = devices[2].id;
+                    // .. use this to start scanning.
                 }
             }).catch(err => {
                 // handle err
