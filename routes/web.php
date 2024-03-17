@@ -55,8 +55,9 @@ Route::get('presensi', DaftarPresensi::class)
 
 Route::post('/process-qr-code', [QRCodeController::class, 'processQRCode'])->name('savescan');
 
-Route::get('/scan', [QRCodeController::class, 'index'])->name('scan');
+// Route::get('/scan', [QRCodeController::class, 'index'])->name('scan');
 
+Route::get('/scan', Scan::class)->name('scan');
 Route::get('/scan2', Scan2::class)->name('scan2');
 
 

@@ -51,16 +51,13 @@
             document.getElementById('form').submit();
         }
 
-        function onScanSuccess(decodedText, decodedResult) {
-            // handle the scanned code as you like, for example:
-            // console.log(`Code matched = ${decodedText}`, decodedResult);
-            // alert(`Code matched = ${decodedText}`, decodedResult);
-            // alert(decodedText);
-            document.getElementById('scanResult').value = decodedText;
-            document.getElementById('form').submit();
-            // $wire.on('getScanResult', decodedText);
-            html5QrcodeScanner.clear();
-        }
+        // function onScanSuccess(decodedText, decodedResult) {
+
+        //     document.getElementById('scanResult').value = decodedText;
+        //     document.getElementById('form').submit();
+
+        //     html5QrcodeScanner.clear();
+        // }
 
         function onScanFailure(error) {
             // handle scan failure, usually better to ignore and keep scanning.
@@ -71,31 +68,34 @@
         function startScan() {
             const html5QrCode = new Html5Qrcode("reader");
             const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+
+                document.getElementById('scanResult').value = decodedText;
+                document.getElementById('form').submit();
+                // $wire.on('getScanResult', decodedText);
+                html5QrcodeScanner.clear();
                 /* handle success */
             };
             const config = {
                 fps: 10,
                 qrbox: {
-                    width: 250,
-                    height: 250
+                    width: 350,
+                    height: 350
                 }
             };
 
             // If you want to prefer front camera
-            // html5QrCode.start({
-            //     facingMode: "user"
-            // }, config, qrCodeSuccessCallback);
-
-            // If you want to prefer back camera
             html5QrCode.start({
-                facingMode: "environment"
+                facingMode: "user"
             }, config, qrCodeSuccessCallback);
 
-            // Select front camera or fail with `OverconstrainedError`.
-            // html5QrCode.start({ facingMode: { exact: "user"} }, config, qrCodeSuccessCallback);
 
-            // Select back camera or fail with `OverconstrainedError`.
-            // html5QrCode.start({ facingMode: { exact: "environment"} }, config, qrCodeSuccessCallback);
+
+            // If you want to prefer back camera
+            // html5QrCode.start({
+            //     facingMode: "environment"
+            // }, config, qrCodeSuccessCallback);
+
+
 
         }
     </script>
