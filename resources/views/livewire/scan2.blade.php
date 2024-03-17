@@ -29,7 +29,7 @@
                             <tr>
                                 <td class="font-semibold">Date</td>
 
-                                <td>{{ $date_check_in }}</td>
+                                <td>{{ format_tgl($date_check_in) }}</td>
 
                             </tr>
                             <tr>
@@ -39,11 +39,11 @@
                             <tr>
                                 <td class="font-semibold">Location</td>
                                 <td>
-                                    <p>{{ $location_check_in }}</p>
+                                    <p>{{ get_location($location_check_in) }}</p>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="font-semibold">Duration</td>
+                                <td class="font-semibold">Durations</td>
                                 <td>{{ $durasi }} minutes</td>
                             </tr>
                         </tbody>
@@ -76,7 +76,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="font-semibold">Duration</td>
+                                <td class="font-semibold">Durations</td>
                                 <td>{{ $durasiAbsen }} minutes</td>
                             </tr>
                         </tbody>

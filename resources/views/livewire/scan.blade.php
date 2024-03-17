@@ -29,7 +29,7 @@
                             <tr>
                                 <td class="font-semibold">Date</td>
 
-                                <td>{{ $date_check_in }}</td>
+                                <td>{{ format_tgl($date_check_in) }}</td>
 
                             </tr>
                             <tr>
@@ -39,7 +39,7 @@
                             <tr>
                                 <td class="font-semibold">Location</td>
                                 <td>
-                                    <p>{{ $location_check_in }}</p>
+                                    <p>{{ get_location($location_check_in) }}</p>
                                 </td>
                             </tr>
                             <tr>
@@ -62,7 +62,7 @@
                             <tr>
                                 <td class="font-semibold">Date</td>
 
-                                <td>{{ $date_check_out }}</td>
+                                <td>{{ format_tgl($date_check_out) }}</td>
 
                             </tr>
                             <tr>
@@ -72,7 +72,7 @@
                             <tr>
                                 <td class="font-semibold">Location</td>
                                 <td>
-                                    <p>{{ $location_check_out }}</p>
+                                    <p>{{ get_location($location_check_out) }}</p>
                                 </td>
                             </tr>
                             <tr>
