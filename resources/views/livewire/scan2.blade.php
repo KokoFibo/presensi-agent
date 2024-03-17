@@ -1,5 +1,5 @@
 <div class="flex flex-col justify-center gap-5 p-3 mx-auto mt-5 xl:w-1/4">
-    
+
     <video id="preview"></video>
 
 
@@ -62,7 +62,7 @@
                             <tr>
                                 <td class="font-semibold">Date</td>
 
-                                <td>{{ $date_check_out }}</td>
+                                <td>{{ format_tgl($date_check_out) }}</td>
 
                             </tr>
                             <tr>
@@ -72,7 +72,7 @@
                             <tr>
                                 <td class="font-semibold">Location</td>
                                 <td>
-                                    <p>{{ $location_check_out }}</p>
+                                    <p>{{ get_location($location_check_out) }}</p>
                                 </td>
                             </tr>
                             <tr>
