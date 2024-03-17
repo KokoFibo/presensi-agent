@@ -86,7 +86,7 @@
 
             // If you want to prefer back camera
             html5QrCode.start({
-                facingMode: "environment"
+                facingMode: "user"
             }, config, qrCodeSuccessCallback);
         }
     </script>
